@@ -426,7 +426,7 @@ def polygon(window, circle, number_of_segments, color, thickness):
     #    and then draw lines that are based in part on those points.
     # -------------------------------------------------------------------------
 
-    
+
 
 def run_test_fancy_polygon():
     """ Tests the   fancy_polygon   function. """
