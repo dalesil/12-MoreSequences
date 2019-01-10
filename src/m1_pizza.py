@@ -558,7 +558,7 @@ def fancy_polygon(window, circle, number_of_lines, hops_to_next_point, color,
       :type thickness:       int
     """
     # -------------------------------------------------------------------------
-    # TODO: 10. Implement and test this function.
+    # DONE: 10. Implement and test this function.
     #   Note that you should write its TEST function first (above).
     #
     # IMPLEMENTATION REQUIREMENT:
@@ -574,17 +574,16 @@ def fancy_polygon(window, circle, number_of_lines, hops_to_next_point, color,
 
     circle.attach_to(window)
     points = generate_points_on_circle(circle, number_of_lines)
-    for k in range(number_of_lines - 1 - hops_to_next_point):
-        line = rg.Line(points[k], points[k + hops_to_next_point])
-        line.attach_to(window)
-        line.thickness = thickness
+    for k in range(number_of_lines):
+        start = points[k]
+        end = points[(k + hops_to_next_point)%number_of_lines]
+        line = rg.Line(start, end)
+        line.arrow = 'last'
         line.color = color
-    for k in range(hops_to_next_point):
-        line = rg.Line(points[hops_to_next_point + k], points[k])
         line.thickness = thickness
-        line.color = color
         line.attach_to(window)
-    window.render()
+        window.render()
+
 
 # -----------------------------------------------------------------------------
 # Calls  main  to start the ball rolling.
