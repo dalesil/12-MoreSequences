@@ -14,17 +14,17 @@ import rosegraphics as rg
 
 def main():
     """ Calls the various   TEST   functions in this module. """
-    run_test_make_simple_list()
-    run_test_make_simple_string()
-    run_test_make_less_simple_string()
-
+    #run_test_make_simple_list()
+    #run_test_make_simple_string()
+    #run_test_make_less_simple_string()
+    #
     # -------------------------------------------------------------------------
-    # TODO: 8. Uncomment the tests below before working _TODO_ 9.
+    # DONE: 8. Uncomment the tests below before working _TODO_ 9.
     #   They launch annoying rg.RoseWindows on each run that you don't want
     #   until you get to _TODO_ 9 and _TODO_ 10.
     # -------------------------------------------------------------------------
-    # run_test_draw_shapes()
-    # run_test_rectangles_from_circles()
+    run_test_draw_shapes()
+    run_test_rectangles_from_circles()
 
 
 def run_test_make_simple_list():
@@ -96,8 +96,8 @@ def run_test_make_simple_string():
     print('--------------------------------------------------')
 
     #Test 1
-    expected = ['5-6-7-8-9-10']
-    actual = make_simple_string(5, 10)
+    expected = ['1-2-3-4-5-6-7-8-9-10']
+    actual = make_simple_string(1, 10)
     print('Expected:', expected)
     print('Actual:  ', actual)
 
@@ -139,7 +139,7 @@ def make_simple_string(m, n):
 def run_test_make_less_simple_string():
     """ Tests the   make_less_simple_string    function. """
     # -------------------------------------------------------------------------
-    # TODO: 6. Implement this TEST function.
+    # DONE: 6. Implement this TEST function.
     #   It TESTS the  make_less_simple_string  function defined below.
     #   Include at least **   2   ** tests.
     #
@@ -150,6 +150,17 @@ def run_test_make_less_simple_string():
     print('Testing the   make_less_simple_string   function:')
     print('--------------------------------------------------')
 
+    # Test 1
+    expected = ['1-2-3-4-5-6-7-8-9-10']
+    actual = make_less_simple_string(1, 10)
+    print('Expected:', expected)
+    print('Actual:  ', actual)
+
+    # Test 2
+    expected = ['40-41-42-43-44-45-46-47-48']
+    actual = make_less_simple_string(40, 48)
+    print('Expected:', expected)
+    print('Actual:  ', actual)
 
 def make_less_simple_string(m, n):
     """
@@ -174,10 +185,14 @@ def make_less_simple_string(m, n):
       :type n: int
     """
     # -------------------------------------------------------------------------
-    # TODO: 7. Implement and test this function.
+    # DONE: 7. Implement and test this function.
     #   Note that you should write its TEST function first (above).
     # -------------------------------------------------------------------------
 
+    seq = str(m)
+    for k in range(m, n):
+        seq = seq + '-' + str(k+1)
+    return seq
 
 def run_test_draw_shapes():
     """ Tests the   draw_shapes    function. """
@@ -257,7 +272,7 @@ def draw_shapes(shapes, window):
       :type window:  rg.RoseWindow
     """
     # -------------------------------------------------------------------------
-    # TODO: 9. Implement and test this function.
+    # DONE: 9. Implement and test this function.
     #             *** Make sure you do _TODO_ 8 in main first! ***
     # The testing code is already written for you; you enabled it via _TODO_ 8.
     #
@@ -269,6 +284,9 @@ def draw_shapes(shapes, window):
     ###########################################################################
     # -------------------------------------------------------------------------
 
+    for k in range(len(shapes)):
+        shapes[k].attach_to(window)
+    window.render(0.3)
 
 def run_test_rectangles_from_circles():
     """ Tests the   rectangles_from_circles    function. """
@@ -369,7 +387,7 @@ def rectangles_from_circles(circles):
       :rtype: list of rg.Rectangles
     """
     # -------------------------------------------------------------------------
-    # TODO: 10. Implement and test this function.
+    # DONE: 10. Implement and test this function.
     #     The testing code is already written for you (above).
     #
     ###########################################################################
@@ -381,6 +399,16 @@ def rectangles_from_circles(circles):
     ###########################################################################
     # -------------------------------------------------------------------------
 
+    seq = []
+    for k in range(len(circles)):
+        c = circles[k]
+        x = c.center.x + c.radius
+        x1 = c.center.x - c.radius
+        y = c.center.y - c.radius
+        y1 = c.center.y + c.radius
+        rect = rg.Rectangle(rg.Point(x, y), rg.Point(x1, y1))
+        seq = seq + [rect]
+    return seq
 
 # -----------------------------------------------------------------------------
 # Calls  main  to start the ball rolling.
