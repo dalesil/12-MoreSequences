@@ -149,7 +149,7 @@ def run_test_make_less_simple_string():
     print('--------------------------------------------------')
     print('Testing the   make_less_simple_string   function:')
     print('--------------------------------------------------')
- 
+
     # Test 1
     expected = ['1-2-3-4-5-6-7-8-9-10']
     actual = make_less_simple_string(1, 10)
